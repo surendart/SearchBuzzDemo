@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements ITrendingViewList
         TrendingViewSettings.Builder builder = new TrendingViewSettings.Builder("EnterYourAppId", Constants.TrendingCategory.DEFAULT);
 //      Other configuration options
 //      builder.setNumTerms(5);
-
+        builder.setTypeTag("SB_DEMO_APP"); //API to send optional data to server. Max size of param - 64 chars.
         builder.setCommercialIconDimension(50, 50); //Pixel width, height
         trendingView.initialize(this, this, builder.build());
     }
@@ -72,13 +72,14 @@ public class MainActivity extends AppCompatActivity implements ITrendingViewList
     /**
      * Yahoo search SDK method called when error in receiving trending terms.
      * @param error
+     * Error Code 100 : Network Exception
+     * Error Code 200 : JSON Exception
      */
 
     @Override
-    public void onTrendingViewError(String error) {
-        Toast.makeText(MainActivity.this, error, Toast.LENGTH_SHORT).show();
+    public void onTrendingViewError(int errorCode, String error) {
+        Toast.makeText(MainActivity.this, "errorCode - " + errorCode + ":" + error, Toast.LENGTH_SHORT).show();
     }
-
     /**
      * Developer defined method for action after click event on trending terms.
      * @param v
