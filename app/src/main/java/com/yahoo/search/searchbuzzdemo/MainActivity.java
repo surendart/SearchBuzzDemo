@@ -8,8 +8,8 @@ package com.yahoo.search.searchbuzzdemo;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.style.URLSpan;
 import android.util.Log;
 import android.view.MenuItem;
@@ -18,11 +18,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.yahoo.search.android.trending.Constants;
+import com.yahoo.search.android.trending.enums.TrendingCategory;
 import com.yahoo.search.android.trending.settings.TrendingViewSettings;
 import com.yahoo.search.android.trending.view.ITrendingViewListener;
 import com.yahoo.search.android.trending.view.TrendingView;
-import com.yahoo.search.searchbuzzdemo.R;
 
 import java.util.ArrayList;
 
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements ITrendingViewList
         setContentView(R.layout.activity_main);
         mTrendingLayout = (LinearLayout) findViewById(R.id.trending_layout);
         TrendingView trendingView = new TrendingView();
-        TrendingViewSettings.Builder builder = new TrendingViewSettings.Builder("EnterYourAppId", Constants.TrendingCategory.DEFAULT);
+        TrendingViewSettings.Builder builder = new TrendingViewSettings.Builder("ENTER_YOUR_APPID", TrendingCategory.DEFAULT);
 //      Other configuration options
 //      builder.setNumTerms(5);
         builder.setTypeTag("SB_DEMO_APP"); //API to send optional data to server. Max size of param - 64 chars.
